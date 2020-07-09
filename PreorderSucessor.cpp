@@ -14,7 +14,7 @@ struct Node
     }
 };
 
-Node * Inorder_Sucessor(Node *node)
+Node * Preorder_Sucessor(Node *node)
 {
     if(node->left)
         return node->left;
@@ -51,11 +51,11 @@ int main()
    root->left->right->right=new Node(9);
    root->left->right->right->parent=root->left->right;
 
-   Node *x=Inorder_Sucessor( root->left->right->right);
+   Node *x=Preorder_Sucessor( root->left->right->right);
    if(x==NULL)
-        cout<<"Indorder Inorder Sucessor of "<< root->left->right->right->data<<" is NULL "<<endl;
+        cout<<"Preorder Sucessor of "<< root->left->right->right->data<<" is NULL "<<endl;
    else
-        cout<<"Indorder Inorder Sucessor of "<< root->left->right->right->data<<" is "<<x->data<<endl;
+        cout<<"Preorder Sucessor of "<< root->left->right->right->data<<" is "<<x->data<<endl;
    return 0;
     
 }
