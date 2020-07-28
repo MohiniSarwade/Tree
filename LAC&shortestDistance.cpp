@@ -33,7 +33,7 @@ Node *LCA(Node *node, int a, int b)
         
         if(a<node->data)
             node=node->left;
-        if(a>node->data)
+        else
             node=node->right;
     }
     
