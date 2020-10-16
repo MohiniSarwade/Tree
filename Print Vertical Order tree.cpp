@@ -181,7 +181,36 @@ void printInorder(Node* root)
     printInorder(root->right);
 }
 
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ void arrange(TreeNode* root, int x, int h, map<int,vector<pair<int,int>>>&mp)
+    {
+        if(root==NULL)
+            return;
+        mp[x].push_back({h,root->val});
+        arrange(root->left,x-1,h+1,mp);
+        arrange(root->right,x+1,h+1,mp);
+    }
+    vector<vector<int>> verticalTraversal(TreeNode* root) {
+        
+        vector<vector<int>>v;
+        map<int,vector<pair<int,int>>>mp;
+        int x=0;
+        arrange(root,x,0,mp);
+        for(auto it=mp.begin();it!=mp.end();it++)
+        {
+            vector<int>res;
+            auto p=it->second;
+            sort(p.begin(),p.end());
+            for(int i=0;i<p.size();i++)
+            {
+                res.push_back(p[i].second);
+            }           
+            v.push_back(res);
+            res.clear();
+        }
+        return v;
+    }
+};
 int main() {
     int t;
     string  tc;
