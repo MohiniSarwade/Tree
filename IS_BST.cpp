@@ -26,7 +26,22 @@ class Node
     prv=node->data;
     return isBST(node->right,prv);
 }
-
+//////////////////////////////////////////////////////////////////////////////////////////
+bool check(Node *root, int l, int r)
+{
+    if(root==NULL)
+        return true;
+    
+    if(root->data<l||root->data>r)
+        return false;
+    return check(root->left,l,(root->data-1)) && check(root->right,(root->data+1),r);
+   
+}
+bool isBST(Node* root) {
+    // Your code here
+    return check(root,INT_MIN+1,INT_MAX-1);
+}
+/////////////////////////////////////////////////////////////////////
 int main()
 {
    Node *root= new Node(4);
