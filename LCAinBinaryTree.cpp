@@ -1,3 +1,19 @@
+Node* lca(Node* root ,int n1 ,int n2 )
+{
+   //Your code here 
+    if(root==NULL)
+        return NULL;
+    if(n1==root->data || n2==root->data)
+        return root;
+    Node *left=lca(root->left,n1,n2);
+    Node *right=lca(root->right,n1,n2);
+    if(left && right)
+        return root;
+    else return (left?left:right);
+}
+
+
+////////////////////////////////////////////////////////////////////////////
 bool findpath(Node *node,vector<Node*> *path,int k)
 {
     if(node==NULL)
