@@ -108,6 +108,21 @@ int KSmallestUsingMorris(Node *root, int k)
     return ksmall; //return the found value 
 } 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
+void KSmallestUsingMorris(Node *root, int k,int &count,int &res) 
+{   
+    if(root)
+    {
+        KSmallestUsingMorris(root->left,k,count,res);
+        count++;
+        if(count==k)
+        {
+            res=root->key;
+            return ;
+        }
+        KSmallestUsingMorris(root->right, k,count,res);
+    }
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 int main()
 {
